@@ -12,20 +12,20 @@ private:
     float vitesse;
 
 public:
-    // Constructeur par dÃ©faut
+    // Constructeur par défaut
     Voiture()
         : marque("Inconnu"), modele("Inconnu"), annee(0), kilometrage(0.0), vitesse(0.0) {}
 
-    // Constructeur avec paramÃ¨tres
+    // Constructeur avec paramètres
     Voiture(const string& m, const string& mod, int an, float km, float vit)
         : marque(m), modele(mod), annee(an), kilometrage(km), vitesse(vit) {}
 
-    // accÃ©lÃ©rer
+    // accélérer
     void accelerer(float valeur) {
         vitesse += valeur;
     }
 
-    // MÃ©thode pour freiner
+    // Méthode pour freiner
     void freiner(float valeur) {
         vitesse -= valeur;
         if (vitesse < 0) {
@@ -33,7 +33,7 @@ public:
         }
     }
 
-    // MÃ©thode pour afficher les informations sur la voiture
+    // Méthode pour afficher les informations sur la voiture
     void afficherInfo() const {
         cout << "Marque: " << marque << "\n"
              << "Modele: " << modele << "\n"
@@ -55,20 +55,20 @@ public:
 
 int main() {
     // Exemple d'utilisation de la classe Voiture
-    Voiture UnVoiture("Ford", "Focus", 2022, 5000, 0);
-    UnVoiture.afficherInfo();
+    Voiture maVoiture("Ford", "Focus", 2022, 5000, 0);
+    maVoiture.afficherInfo();
 
-    UnVoiture.accelerer(60);
+    maVoiture.accelerer(60);
     cout << "Apres acceleration:\n";
-    UnVoiture.afficherInfo();
+    maVoiture.afficherInfo();
 
-    UnVoiture.avancer(150);
+    maVoiture.avancer(150);
     cout << "Apres avoir avance:\n";
-    UnVoiture.afficherInfo();
+    maVoiture.afficherInfo();
 
-    UnVoiture.freiner(30);
+    maVoiture.freiner(30);
     cout << "Apres freinage:\n";
-    UnVoiture.afficherInfo();
+    maVoiture.afficherInfo();
 
     return 0;
 }
