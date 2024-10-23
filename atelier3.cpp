@@ -55,20 +55,20 @@ public:
 
 int main() {
     // Exemple d'utilisation de la classe Voiture
-    Voiture maVoiture("Ford", "Focus", 2022, 5000, 0);
-    maVoiture.afficherInfo();
+    Voiture unVoiture("Ford", "Focus", 2022, 5000, 0);
+    unVoiture.afficherInfo();
 
     maVoiture.accelerer(60);
     cout << "Apres acceleration:\n";
-    maVoiture.afficherInfo();
+    unVoiture.afficherInfo();
 
-    maVoiture.avancer(150);
+    unVoiture.avancer(150);
     cout << "Apres avoir avance:\n";
-    maVoiture.afficherInfo();
+    unVoiture.afficherInfo();
 
-    maVoiture.freiner(30);
+    unVoiture.freiner(30);
     cout << "Apres freinage:\n";
-    maVoiture.afficherInfo();
+    unVoiture.afficherInfo();
 
     return 0;
 }
