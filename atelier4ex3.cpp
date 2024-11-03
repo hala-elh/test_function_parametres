@@ -1,38 +1,66 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
-<CodeBlocks_project_file>
-	<FileVersion major="1" minor="6" />
-	<Project>
-		<Option title="atelier4ex3" />
-		<Option pch_mode="2" />
-		<Option compiler="gcc" />
-		<Build>
-			<Target title="Debug">
-				<Option output="bin/Debug/atelier4ex3" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-				</Compiler>
-			</Target>
-			<Target title="Release">
-				<Option output="bin/Release/atelier4ex3" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-O2" />
-				</Compiler>
-				<Linker>
-					<Add option="-s" />
-				</Linker>
-			</Target>
-		</Build>
-		<Compiler>
-			<Add option="-Wall" />
-			<Add option="-fexceptions" />
-		</Compiler>
-		<Unit filename="main.cpp" />
-		<Extensions />
-	</Project>
-</CodeBlocks_project_file>
+#include <iostream>
+#include <string>
+
+class Personne {
+private:
+    std::string nom;
+    std::string prenom;
+    std::string dateNaissance;
+
+public:
+    // Constructor
+    Personne(const std::string& nom, const std::string& prenom, const std::string& dateNaissance)
+        : nom(nom), prenom(prenom), dateNaissance(dateNaissance) {}
+
+    virtual void Afficher() const {
+        std::cout << "Nom: " << nom << ", Prenom: " << prenom << ", Date de naissance: " << dateNaissance << std::endl;
+    }
+};
+
+class Employe : public Personne {
+private:
+    double salaire;
+
+public:
+    // Constructor
+    Employe(const std::string& nom, const std::string& prenom, const std::string& dateNaissance, double salaire)
+        : Personne(nom, prenom, dateNaissance), salaire(salaire) {}
+
+    // Overridden method
+    void Afficher() const override {
+        Personne::Afficher(); // Call base class method
+        std::cout << "Salaire: " << salaire << std::endl;
+    }
+};
+
+class Chef : public Employe {
+private:
+    std::string service;
+
+public:
+    // Constructor
+    Chef(const std::string& nom, const std::string& prenom, const std::string& dateNaissance, double salaire, const std::string& service)
+        : Employe(nom, prenom, dateNaissance, salaire), service(service) {}
+
+    // Overridden method
+    void Afficher() const override {
+        Employe::Afficher(); // Call base class method
+        std::cout << "Service: " << service << std::endl;
+    }
+};
+
+class Directeur : public Chef {
+private:
+    std::string societe;
+
+public:
+    // Constructor
+    Directeur(const std::string& nom, const std::string& prenom, const std::string& dateNaissance, double salaire, const std::string& service, const std::string& societe)
+        : Chef(nom, prenom, dateNaissance, salaire, service), societe(societe) {}
+
+    // Overridden method
+    void Afficher() const override {
+        Chef::Afficher(); // Call base class method
+        std::cout << "Societe: " << societe << std::endl;
+    }
+};
